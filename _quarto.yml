@@ -6,7 +6,6 @@ website:
   title: "深層学習ノート"
   description: "この個人ブログは深層学習について学んだことをまとめています。"
   site-url: https://akitsuyoshi.github.io/
-  repo-url: https://github.com/Akitsuyoshi/Akitsuyoshi.github.io.git
   navbar:
     right:
       - icon: github
