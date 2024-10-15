@@ -8,3 +8,10 @@ freeze: true
 title-block-banner: true
 
 output-file: index.html
+
+comments:
+    giscus:
+      theme: light
+      repo: Akitsuyoshi/Akitsuyoshi.github.io
+      mapping: pathname
+      loading: lazy
