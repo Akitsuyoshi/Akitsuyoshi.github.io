@@ -10,7 +10,7 @@ listing:
   max-items: 25
   table-hover: true
   date-format: YYYY-M-D
-  fields: [date, title, categories,  reading-time]
+  fields: [date, title, categories]
 page-layout: full
 title-block-banner: true
 ---
