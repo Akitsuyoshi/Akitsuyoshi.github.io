@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-10-31">
+<meta name="dcterms.date" content="2024-11-03">
 <meta name="description" content="このノートでは、kaggleのMNIST(手書き数字データ)を用いた画像分類を行なっていきます">
 
 <title>MNIST画像分類モデルを実装してみよう – 深層学習ノート</title>
@@ -102,6 +102,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EPR9298XQ6"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-EPR9298XQ6', { 'anonymize_ip': true});
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -164,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 31, 2024</p>
+        <p class="date">November 3, 2024</p>
       </div>
     </div>
     
@@ -839,7 +848,7 @@ Downloading digit-recognizer.zip to /notebooks</code></pre>
 </div>
 </div>
 </div>
-<p>先のモデルと比較して、resnet18はより精度の高いモデルであることが分かります。モデルの複雑性もそうですが、転移学習によって精度が高まったとも言えます。モデル精度の比較結果から、先のモデルは学習不足であったことが分かります。一般的に、過学習になる前段階で注意するポイントは学習不足です。学習不足にはより複雑なモデルが有効です。トレーニングサイクルを増やす、学習率を少し上げるなども学習不足に効果的です。よくある間違いは、過学習になる前(学習不足段階)に過学習を防ぐ手法(データ量を増やす、データ拡張、regularizationなど)を用いることです。<strong>過学習への対処は、過学習が起きた後に行います。起きる前、予防的には行いません。</strong></p>
+<p>先のモデルと比較して、resnet18はより精度の高いモデルであることが分かります。モデル精度の比較結果から、先のモデルは学習不足であったことが分かります。一般的に、過学習になる前段階で注意するポイントは学習不足です。学習不足にはより複雑なモデルが有効です。トレーニングサイクルを増やす、学習率を少し上げるなども学習不足に効果的です。よくある間違いは、過学習になる前(学習不足段階)に過学習を防ぐ手法(データ量を増やす、データ拡張、regularizationなど)を用いることです。<strong>過学習への対処は、過学習が起きた後に行います。起きる前、予防的には行いません。</strong></p>
 <div id="cell-46" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>learn.fine_tune(<span class="dv">6</span>, <span class="fl">3e-3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
