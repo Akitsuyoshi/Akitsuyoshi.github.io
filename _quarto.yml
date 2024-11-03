@@ -10,6 +10,7 @@ website:
   repo-actions: [edit, source, issue]
   back-to-top-navigation: true
   page-navigation: true
+  google-analytics: "G-EPR9298XQ6"
   navbar:
     right:
       - icon: github
