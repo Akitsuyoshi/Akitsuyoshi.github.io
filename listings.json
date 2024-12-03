@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/tweet_2_kaggle/index.html",
       "/posts/tweet_kaggle/index.html",
       "/posts/mnist_kaggle/index.html"
     ]
