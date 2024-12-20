@@ -7,7 +7,7 @@ listing:
   categories: true
   sort-ui: false
   filter-ui: false
-  max-items: 25
+  max-items: 20
   table-hover: true
   date-format: YYYY-M-D
   fields: [date, title, categories]
