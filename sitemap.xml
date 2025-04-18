@@ -2,22 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://akitsuyoshi.github.io/index.html</loc>
-    <lastmod>2024-10-31T04:15:44.066Z</lastmod>
-  </url>
-  <url>
-    <loc>https://akitsuyoshi.github.io/posts/mnist_kaggle/index.html</loc>
-    <lastmod>2024-11-20T03:13:38.567Z</lastmod>
-  </url>
-  <url>
-    <loc>https://akitsuyoshi.github.io/posts/tweet_2_kaggle/index.html</loc>
-    <lastmod>2024-12-03T06:05:13.857Z</lastmod>
-  </url>
-  <url>
-    <loc>https://akitsuyoshi.github.io/posts/tweet_kaggle/index.html</loc>
-    <lastmod>2024-12-03T04:27:28.549Z</lastmod>
+    <lastmod>2025-04-18T02:49:41.845Z</lastmod>
   </url>
   <url>
     <loc>https://akitsuyoshi.github.io/posts/food-11-exp2-kaggle/index.html</loc>
-    <lastmod>2024-12-19T05:06:49.201Z</lastmod>
+    <lastmod>2025-04-18T02:49:41.857Z</lastmod>
+  </url>
+  <url>
+    <loc>https://akitsuyoshi.github.io/posts/tweet_kaggle/index.html</loc>
+    <lastmod>2025-04-18T02:49:41.867Z</lastmod>
+  </url>
+  <url>
+    <loc>https://akitsuyoshi.github.io/posts/tweet_2_kaggle/index.html</loc>
+    <lastmod>2025-04-18T02:49:41.866Z</lastmod>
+  </url>
+  <url>
+    <loc>https://akitsuyoshi.github.io/posts/mnist_kaggle/index.html</loc>
+    <lastmod>2025-04-18T02:49:41.860Z</lastmod>
   </url>
 </urlset>
