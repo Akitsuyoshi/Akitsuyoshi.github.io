@@ -223,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <section id="必要なライプラリーのインストール" class="level2">
 <h2 class="anchored" data-anchor-id="必要なライプラリーのインストール">0. 必要なライプラリーのインストール</h2>
-<p>最新のfastaiライブラリー(記事作成時点で<code>2.7.18</code>)が入っていることを確認してください。このノートのコードは、古いバージョンでは動きません。</p>
+<p>最新のfastaiライブラリー(記事作成時点で<code>2.7.19</code>)が入っていることを確認してください。このノートのコードは、古いバージョンでは動きません。</p>
 <div id="cell-3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>: <span class="im">import</span> fastkaggle</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ModuleNotFoundError</span>:</span>
@@ -234,11 +234,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.vision.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>fastai.__version__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv</code></pre>
-</div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>'2.7.18'</code></pre>
+<pre><code>'2.7.19'</code></pre>
 </div>
 </div>
 </section>
@@ -246,8 +243,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="データセットのインストール">1. データセットのインストール</h2>
 <p>競技参加の同意・APIキーの取得を、テータセットのインストール前に行っていきましょう。</p>
 <div id="cell-5" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>mkdir <span class="op">/</span>root<span class="op">/</span>.config<span class="op">/</span>kaggle</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>touch <span class="op">/</span>root<span class="op">/</span>.config<span class="op">/</span>kaggle<span class="op">/</span>kaggle.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>mkdir <span class="op">/</span>root<span class="op">/</span>.config<span class="op">/</span>kaggle</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>touch <span class="op">/</span>root<span class="op">/</span>.config<span class="op">/</span>kaggle<span class="op">/</span>kaggle.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>mkdir: cannot create directory ‘/root/.config/kaggle’: File exists</code></pre>
+</div>
 </div>
 <div id="cell-6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>comp <span class="op">=</span> <span class="st">"dl-2024-autum-exp-2"</span></span>
@@ -255,28 +255,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> setup_comp(comp)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>path.ls()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Warning: Your Kaggle API key is readable by other users on this system! To fix this, you can run 'chmod 600 /root/.config/kaggle/kaggle.json'
-Downloading dl-2024-autum-exp-2.zip to /notebooks</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 683M/683M [00:09&lt;00:00, 74.8MB/s] </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code></code></pre>
+<pre><code>Warning: Your Kaggle API key is readable by other users on this system! To fix this, you can run 'chmod 600 /root/.config/kaggle/kaggle.json'</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>(#2) [Path('dl-2024-autum-exp-2/sample_submission.csv'),Path('dl-2024-autum-exp-2/food-11_DL_2024')]</code></pre>
 </div>
 </div>
 <div id="cell-7" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm <span class="op">-</span>rf temp</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>mkdir temp</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cp <span class="op">-</span>r {path}<span class="op">/</span>food<span class="op">-</span><span class="dv">11</span><span class="er">_DL_2024</span><span class="op">/</span>training<span class="op">/</span>labeled temp<span class="op">/</span>training</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cp <span class="op">-</span>r {path}<span class="op">/</span>food<span class="op">-</span><span class="dv">11</span><span class="er">_DL_2024</span><span class="op">/</span>validation temp<span class="op">/</span>validation</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cp <span class="op">-</span>r {path}<span class="op">/</span>food<span class="op">-</span><span class="dv">11</span><span class="er">_DL_2024</span><span class="op">/</span>testing temp<span class="op">/</span>testing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm <span class="op">-</span>rf temp</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>mkdir temp</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cp <span class="op">-</span>r {path}<span class="op">/</span>food<span class="op">-</span><span class="dv">11</span><span class="er">_DL_2024</span><span class="op">/</span>training<span class="op">/</span>labeled temp<span class="op">/</span>training</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cp <span class="op">-</span>r {path}<span class="op">/</span>food<span class="op">-</span><span class="dv">11</span><span class="er">_DL_2024</span><span class="op">/</span>validation temp<span class="op">/</span>validation</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cp <span class="op">-</span>r {path}<span class="op">/</span>food<span class="op">-</span><span class="dv">11</span><span class="er">_DL_2024</span><span class="op">/</span>testing temp<span class="op">/</span>testing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-8" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>img_files <span class="op">=</span> get_image_files(path)<span class="op">;</span> img_files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>img_files <span class="op">=</span> get_image_files(path)<span class="op">;</span> img_files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>(#10512) [Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/6022.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/1332.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/3737.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/4200.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/2541.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/1649.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/3191.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/5376.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/2739.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/5792.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/4384.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/5015.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/3123.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/6487.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/5924.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/6366.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/3052.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/4788.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/6755.jpg'),Path('dl-2024-autum-exp-2/food-11_DL_2024/training/unlabeled/00/3960.jpg')...]</code></pre>
 </div>
@@ -306,32 +299,32 @@ Downloading dl-2024-autum-exp-2.zip to /notebooks</code></pre>
 </table>
 <p>では、まずは画像を9つのバッチに分ける関数を作ります。</p>
 <div id="cell-11" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_patches(img, grid_sz<span class="op">=</span><span class="dv">3</span>):</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    patches, labels <span class="op">=</span> [], []</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    w, h <span class="op">=</span> img.size</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    tile_w, tile_h <span class="op">=</span> w<span class="op">//</span>grid_sz, h<span class="op">//</span>grid_sz</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(grid_sz):</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(grid_sz):</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>            box <span class="op">=</span> (j<span class="op">*</span>tile_w, i<span class="op">*</span>tile_h, (j<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>tile_w, (i<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>tile_h)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>            patches.append(img.crop(box))</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> random.randint(<span class="dv">0</span>, <span class="bu">len</span>(patches) <span class="op">-</span> <span class="dv">1</span>)</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    main_patch <span class="op">=</span> patches[idx]</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    neighbors <span class="op">=</span> [</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        (<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>), (<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), (<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>),           (<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>),  (<span class="dv">1</span>, <span class="dv">0</span>),   (<span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> label, (dx, dy) <span class="kw">in</span> <span class="bu">enumerate</span>(neighbors):</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        ni, nj <span class="op">=</span> (idx<span class="op">//</span>grid_sz) <span class="op">+</span> dx, (idx <span class="op">%</span> grid_sz) <span class="op">+</span> dy</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> ni <span class="op">&lt;</span> grid_sz <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> nj <span class="op">&lt;</span> grid_sz:</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>            neighbor_patch <span class="op">=</span> patches[ni<span class="op">*</span>grid_sz <span class="op">+</span> nj]</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>            labels.append((main_patch, neighbor_patch, label))</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> labels</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>extract_patches(PILImage.create(img_files[<span class="dv">0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_patches(img, grid_sz<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    patches, labels <span class="op">=</span> [], []</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    w, h <span class="op">=</span> img.size</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    tile_w, tile_h <span class="op">=</span> w<span class="op">//</span>grid_sz, h<span class="op">//</span>grid_sz</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(grid_sz):</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(grid_sz):</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>            box <span class="op">=</span> (j<span class="op">*</span>tile_w, i<span class="op">*</span>tile_h, (j<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>tile_w, (i<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>tile_h)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>            patches.append(img.crop(box))</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> random.randint(<span class="dv">0</span>, <span class="bu">len</span>(patches) <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    main_patch <span class="op">=</span> patches[idx]</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    neighbors <span class="op">=</span> [</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        (<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>), (<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), (<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>),           (<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>),  (<span class="dv">1</span>, <span class="dv">0</span>),   (<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> label, (dx, dy) <span class="kw">in</span> <span class="bu">enumerate</span>(neighbors):</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        ni, nj <span class="op">=</span> (idx<span class="op">//</span>grid_sz) <span class="op">+</span> dx, (idx <span class="op">%</span> grid_sz) <span class="op">+</span> dy</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> ni <span class="op">&lt;</span> grid_sz <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> nj <span class="op">&lt;</span> grid_sz:</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>            neighbor_patch <span class="op">=</span> patches[ni<span class="op">*</span>grid_sz <span class="op">+</span> nj]</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>            labels.append((main_patch, neighbor_patch, label))</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> labels</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>extract_patches(PILImage.create(img_files[<span class="dv">0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>[(&lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
   &lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
@@ -341,28 +334,37 @@ Downloading dl-2024-autum-exp-2.zip to /notebooks</code></pre>
   1),
  (&lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
   &lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
+  2),
+ (&lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
+  &lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
   3),
+ (&lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
+  &lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
+  4),
  (&lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
   &lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
   5),
  (&lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
   &lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
-  6)]</code></pre>
+  6),
+ (&lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
+  &lt;PIL.Image.Image image mode=RGB size=170x170&gt;,
+  7)]</code></pre>
 </div>
 </div>
 <div id="cell-12" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PatchImage(Tuple):</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> show(<span class="va">self</span>, ctx<span class="op">=</span><span class="va">None</span>, <span class="op">**</span>kwargs):</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        img1, img2, label <span class="op">=</span> <span class="va">self</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(img1, Tensor):</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>            t1, t2 <span class="op">=</span> image2tensor(img1), image2tensor(img2)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: t1, t2 <span class="op">=</span> img1, img2</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        line <span class="op">=</span> t1.new_zeros(t1.shape[<span class="dv">0</span>], t1.shape[<span class="dv">1</span>], <span class="dv">5</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> show_image(torch.cat([t1, line, t2], dim<span class="op">=</span><span class="dv">2</span>),</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                          title<span class="op">=</span>label, ctx<span class="op">=</span>ctx)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>imgs_label <span class="op">=</span> random.choice(extract_patches(PILImage.create(img_files[<span class="dv">0</span>])))</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>PatchImage(imgs_label).show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PatchImage(Tuple):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> show(<span class="va">self</span>, ctx<span class="op">=</span><span class="va">None</span>, <span class="op">**</span>kwargs):</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        img1, img2, label <span class="op">=</span> <span class="va">self</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(img1, Tensor):</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>            t1, t2 <span class="op">=</span> image2tensor(img1), image2tensor(img2)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: t1, t2 <span class="op">=</span> img1, img2</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        line <span class="op">=</span> t1.new_zeros(t1.shape[<span class="dv">0</span>], t1.shape[<span class="dv">1</span>], <span class="dv">5</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> show_image(torch.cat([t1, line, t2], dim<span class="op">=</span><span class="dv">2</span>),</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                          title<span class="op">=</span>label, ctx<span class="op">=</span>ctx)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>imgs_label <span class="op">=</span> random.choice(extract_patches(PILImage.create(img_files[<span class="dv">0</span>])))</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>PatchImage(imgs_label).show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -373,17 +375,17 @@ Downloading dl-2024-autum-exp-2.zip to /notebooks</code></pre>
 </div>
 <p>画像を<code>3*3</code>のパッチに分割したら、その中の1ペア(二つの画像)とそのラベル(隣接するパッチ2の位置)をランダムに選びます。ここでの注意点は、画像をfastaiライブラリー型のPILImageに、またラベルをtensor型に変換する必要がある点です。後の画像処理(ResizeやToTensor)はPILImage型にだけ適用されるトランスフォーマーです。逆にPILImage型への変換なしでは、必要な画像処理は適用されません。またfastaiの古いバージョンではここでエラーが出ます。</p>
 <div id="cell-14" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PatchTransform(Transform):</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, grid_sz<span class="op">=</span><span class="dv">3</span>):</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.grid_sz <span class="op">=</span> grid_sz</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> encodes(<span class="va">self</span>, f):</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        img <span class="op">=</span> PILImage.create(f)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        img1, img2, label <span class="op">=</span> random.choice(extract_patches(img, grid_sz<span class="op">=</span><span class="va">self</span>.grid_sz))</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        img1, img2, label <span class="op">=</span> PILImage.create(img1), PILImage.create(img2), torch.tensor(label).<span class="bu">long</span>()</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> PatchImage((img1, img2, label))</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>PatchTransform()(img_files[<span class="dv">0</span>]).show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PatchTransform(Transform):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, grid_sz<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.grid_sz <span class="op">=</span> grid_sz</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> encodes(<span class="va">self</span>, f):</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        img <span class="op">=</span> PILImage.create(f)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        img1, img2, label <span class="op">=</span> random.choice(extract_patches(img, grid_sz<span class="op">=</span><span class="va">self</span>.grid_sz))</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>        img1, img2, label <span class="op">=</span> PILImage.create(img1), PILImage.create(img2), torch.tensor(label).<span class="bu">long</span>()</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> PatchImage((img1, img2, label))</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>PatchTransform()(img_files[<span class="dv">0</span>]).show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -393,8 +395,8 @@ Downloading dl-2024-autum-exp-2.zip to /notebooks</code></pre>
 </div>
 </div>
 <div id="cell-15" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>tls <span class="op">=</span> TfmdLists(img_files, PatchTransform(), splits<span class="op">=</span>RandomSplitter(<span class="fl">0.1</span>)(img_files))</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>show_at(tls.valid, <span class="dv">1</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tls <span class="op">=</span> TfmdLists(img_files, PatchTransform(), splits<span class="op">=</span>RandomSplitter(<span class="fl">0.1</span>)(img_files))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>show_at(tls.valid, <span class="dv">1</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -405,10 +407,10 @@ Downloading dl-2024-autum-exp-2.zip to /notebooks</code></pre>
 </div>
 <p>データセットを用意したら、バッチの形<code>(batch number, channel, height, width)</code>であることを確認します。今回のデータセットは2つの画像と1つのラベルです。</p>
 <div id="cell-17" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> tls.dataloaders(after_item<span class="op">=</span>[Resize(<span class="dv">128</span>), ToTensor],</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                      after_batch<span class="op">=</span>[IntToFloatTensor, <span class="op">*</span>aug_transforms(do_flip<span class="op">=</span><span class="va">False</span>, mult<span class="op">=</span><span class="fl">0.03</span>), Normalize.from_stats(<span class="op">*</span>imagenet_stats)])</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>x1, x2, y <span class="op">=</span> dls.one_batch()</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>x1.shape, x2.shape, y.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> tls.dataloaders(after_item<span class="op">=</span>[Resize(<span class="dv">128</span>), ToTensor],</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                      after_batch<span class="op">=</span>[IntToFloatTensor, <span class="op">*</span>aug_transforms(do_flip<span class="op">=</span><span class="va">False</span>, mult<span class="op">=</span><span class="fl">0.03</span>), Normalize.from_stats(<span class="op">*</span>imagenet_stats)])</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>x1, x2, y <span class="op">=</span> dls.one_batch()</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>x1.shape, x2.shape, y.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>(torch.Size([64, 3, 128, 128]),
  torch.Size([64, 3, 128, 128]),
@@ -419,25 +421,25 @@ Downloading dl-2024-autum-exp-2.zip to /notebooks</code></pre>
 <section id="自己教師あり学習モデルのトレーニング" class="level2">
 <h2 class="anchored" data-anchor-id="自己教師あり学習モデルのトレーニング">3. 自己教師あり学習モデルのトレーニング</h2>
 <p>データローダーの用意ができましたら、次はモデル設計です。ここでは<code>xresnet</code>を使用して設計を簡略化しています。詳しい実装方法は<a href="https://docs.fast.ai/tutorial.siamese.html#train-the-model">fastai のチュートリアル</a>を参照してください。大事な実装点は、エンコーダーには重みを共有したCNNモデル(resnet以外も可)を使用します。<code>model_meta[arch]["cut"]</code>でモデルのbody部分(headを取り除いた)の情報を取得しています。</p>
-<div id="cell-19" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PatchModel(Module):</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, encoder, head):</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.encoder, <span class="va">self</span>.head <span class="op">=</span> encoder, head</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x1, x2):</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        feats <span class="op">=</span> torch.cat([<span class="va">self</span>.encoder(x1), <span class="va">self</span>.encoder(x2)], dim<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.head(feats)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>encoder <span class="op">=</span> create_body(xresnet18(), cut<span class="op">=</span>model_meta[xresnet18][<span class="st">"cut"</span>])</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>head <span class="op">=</span> create_head(<span class="dv">512</span><span class="op">*</span><span class="dv">2</span>, <span class="dv">8</span>, bn_final<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> splitter(model): <span class="cf">return</span> [params(model.encoder), params(model.head)]</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(dls, PatchModel(encoder, head),</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>                splitter<span class="op">=</span>splitter,</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>                loss_func<span class="op">=</span>LabelSmoothingCrossEntropyFlat(),</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>                metrics<span class="op">=</span>accuracy).to_fp16()</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>learn.lr_find(suggest_funcs<span class="op">=</span>(valley, slide))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-19" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PatchModel(Module):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, encoder, head):</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.encoder, <span class="va">self</span>.head <span class="op">=</span> encoder, head</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x1, x2):</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        feats <span class="op">=</span> torch.cat([<span class="va">self</span>.encoder(x1), <span class="va">self</span>.encoder(x2)], dim<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.head(feats)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>encoder <span class="op">=</span> create_body(xresnet18(pretrained<span class="op">=</span><span class="va">True</span>), cut<span class="op">=</span>model_meta[xresnet18][<span class="st">"cut"</span>])</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>head <span class="op">=</span> create_head(<span class="dv">512</span><span class="op">*</span><span class="dv">2</span>, <span class="dv">8</span>, bn_final<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> splitter(model): <span class="cf">return</span> [params(model.encoder), params(model.head)]</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(dls, PatchModel(encoder, head),</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>                splitter<span class="op">=</span>splitter,</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>                loss_func<span class="op">=</span>LabelSmoothingCrossEntropyFlat(),</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>                metrics<span class="op">=</span>accuracy).to_fp16()</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>learn.lr_find(suggest_funcs<span class="op">=</span>(valley, slide))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -459,8 +461,8 @@ Downloading dl-2024-autum-exp-2.zip to /notebooks</code></pre>
 <div class="cell-output cell-output-display">
 
 </div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>SuggestedLRs(valley=0.005248074419796467, slide=0.2089296132326126)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>SuggestedLRs(valley=0.007585775572806597, slide=0.17378008365631104)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -472,7 +474,7 @@ Downloading dl-2024-autum-exp-2.zip to /notebooks</code></pre>
 </div>
 <p>モデルのトレーニングを開始します。学習後は、モデルのエンコーダー(body部分のみ)の重みを保存します。後の分類タスクに、保存された学習済み重みを使用します。</p>
 <div id="cell-21" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>learn.fine_tune(<span class="dv">8</span>, <span class="fl">3e-2</span>, wd<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>learn.fine_tune(<span class="dv">6</span>, <span class="fl">3e-2</span>, wd<span class="op">=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -505,10 +507,10 @@ Downloading dl-2024-autum-exp-2.zip to /notebooks</code></pre>
 <tbody>
 <tr class="odd">
 <td>0</td>
-<td>2.065364</td>
-<td>2.055045</td>
-<td>0.176974</td>
-<td>00:11</td>
+<td>2.028306</td>
+<td>2.027441</td>
+<td>0.235966</td>
+<td>00:34</td>
 </tr>
 </tbody>
 </table>
@@ -545,85 +547,71 @@ Downloading dl-2024-autum-exp-2.zip to /notebooks</code></pre>
 <tbody>
 <tr class="odd">
 <td>0</td>
-<td>2.034549</td>
-<td>2.007366</td>
-<td>0.215033</td>
-<td>00:12</td>
+<td>1.890716</td>
+<td>1.852404</td>
+<td>0.310181</td>
+<td>00:39</td>
 </tr>
 <tr class="even">
 <td>1</td>
-<td>2.014729</td>
-<td>1.965503</td>
-<td>0.252141</td>
-<td>00:12</td>
+<td>1.775437</td>
+<td>1.727063</td>
+<td>0.393911</td>
+<td>00:39</td>
 </tr>
 <tr class="odd">
 <td>2</td>
-<td>1.937564</td>
-<td>1.877558</td>
-<td>0.265461</td>
-<td>00:12</td>
+<td>1.672039</td>
+<td>1.589555</td>
+<td>0.458611</td>
+<td>00:40</td>
 </tr>
 <tr class="even">
 <td>3</td>
-<td>1.864192</td>
-<td>1.791731</td>
-<td>0.340628</td>
-<td>00:12</td>
+<td>1.591938</td>
+<td>1.518641</td>
+<td>0.483349</td>
+<td>00:40</td>
 </tr>
 <tr class="odd">
 <td>4</td>
-<td>1.793791</td>
-<td>1.686071</td>
-<td>0.413892</td>
-<td>00:12</td>
+<td>1.530126</td>
+<td>1.479046</td>
+<td>0.514748</td>
+<td>00:40</td>
 </tr>
 <tr class="even">
 <td>5</td>
-<td>1.735727</td>
-<td>1.655852</td>
-<td>0.398668</td>
-<td>00:12</td>
-</tr>
-<tr class="odd">
-<td>6</td>
-<td>1.696479</td>
-<td>1.614018</td>
-<td>0.426261</td>
-<td>00:12</td>
-</tr>
-<tr class="even">
-<td>7</td>
-<td>1.693841</td>
-<td>1.626468</td>
-<td>0.445290</td>
-<td>00:12</td>
+<td>1.509492</td>
+<td>1.459406</td>
+<td>0.535680</td>
+<td>00:39</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div id="cell-22" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>torch.save(learn.model.encoder.state_dict(), path<span class="op">/</span><span class="st">"pretrained.pt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>torch.save(learn.model.encoder.state_dict(), path<span class="op">/</span><span class="st">"pretrained.pt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="タスク特化のデータセットを用意" class="level2">
 <h2 class="anchored" data-anchor-id="タスク特化のデータセットを用意">4. タスク特化のデータセットを用意</h2>
-<p>画像分類(本来のタスク)のデータセットを用意して、表示します。</p>
+<p>画像分類(本来のタスク)のデータセットを用意します。ここでのポイントは、トレーニング画像のサイズを自己教師あり学習時のサイズと合わせる点です。</p>
 <div id="cell-24" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_dls(size<span class="op">=</span><span class="dv">128</span>, bs<span class="op">=</span><span class="dv">128</span>):</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> DataBlock(</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        blocks<span class="op">=</span>(ImageBlock, CategoryBlock),</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        get_items<span class="op">=</span>get_image_files,</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        get_y<span class="op">=</span>parent_label,</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        splitter<span class="op">=</span>GrandparentSplitter(train_name<span class="op">=</span><span class="st">"training"</span>, valid_name<span class="op">=</span><span class="st">"validation"</span>),</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        item_tfms<span class="op">=</span>Resize(<span class="dv">512</span>),</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        batch_tfms<span class="op">=</span>[<span class="op">*</span>aug_transforms(size<span class="op">=</span>size, min_scale<span class="op">=</span><span class="fl">0.7</span>),</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>                    Normalize.from_stats(<span class="op">*</span>imagenet_stats)]</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    ).dataloaders(Path(<span class="st">"temp"</span>), bs<span class="op">=</span>bs, num_workers<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> get_dls(<span class="dv">128</span>, <span class="dv">128</span>)</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>dls.show_batch(max_n<span class="op">=</span><span class="dv">25</span>, nrows<span class="op">=</span><span class="dv">5</span>, ncols<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_dls(size<span class="op">=</span><span class="dv">128</span>, bs<span class="op">=</span><span class="dv">128</span>):</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> DataBlock(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        blocks<span class="op">=</span>(ImageBlock, CategoryBlock),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        get_items<span class="op">=</span>get_image_files,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        get_y<span class="op">=</span>parent_label,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        splitter<span class="op">=</span>GrandparentSplitter(train_name<span class="op">=</span><span class="st">"training"</span>, valid_name<span class="op">=</span><span class="st">"validation"</span>),</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>        item_tfms<span class="op">=</span>Resize(<span class="dv">512</span>),</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        batch_tfms<span class="op">=</span>[<span class="op">*</span>aug_transforms(size<span class="op">=</span>size, min_scale<span class="op">=</span><span class="fl">0.7</span>),</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>                    Normalize.from_stats(<span class="op">*</span>imagenet_stats)]</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    ).dataloaders(Path(<span class="st">"temp"</span>), bs<span class="op">=</span>bs, num_workers<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> get_dls(<span class="dv">128</span>, <span class="dv">128</span>)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>dls.show_batch(max_n<span class="op">=</span><span class="dv">25</span>, nrows<span class="op">=</span><span class="dv">5</span>, ncols<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -632,10 +620,10 @@ Downloading dl-2024-autum-exp-2.zip to /notebooks</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-25" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"training sample is : </span><span class="sc">{</span><span class="bu">len</span>(dls.train_ds)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"training sample is : </span><span class="sc">{</span><span class="bu">len</span>(dls.valid_ds)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"unique targets are: </span><span class="sc">{</span>dls<span class="sc">.</span>vocab<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-25" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"training sample is : </span><span class="sc">{</span><span class="bu">len</span>(dls.train_ds)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"training sample is : </span><span class="sc">{</span><span class="bu">len</span>(dls.valid_ds)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"unique targets are: </span><span class="sc">{</span>dls<span class="sc">.</span>vocab<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>training sample is : 2464
 training sample is : 561
@@ -646,25 +634,25 @@ unique targets are: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09',
 <section id="タスク特化モデルのトレーニング" class="level2">
 <h2 class="anchored" data-anchor-id="タスク特化モデルのトレーニング">5. タスク特化モデルのトレーニング</h2>
 <p>データセットを用意したら、モデルのトレーニングに移ります。ここでのポイントは、先ほどの学習済み重みを使用する点です。使用するエンコーダーは同じモデル設計(ここでは<code>xresnet18</code>)であることも注意点です。<code>encoder.load_state_dict</code>メソッドで学習済みの重みを取得します。</p>
-<div id="cell-27" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_learned_encoder(pretrained<span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    encoder <span class="op">=</span> create_body(xresnet18(), cut<span class="op">=</span>model_meta[xresnet18][<span class="st">"cut"</span>])</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pretrained:</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Started loading weights"</span>)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>        encoder.load_state_dict(torch.load(path<span class="op">/</span><span class="st">"pretrained.pt"</span>))</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Finished loading weights"</span>)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> encoder</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_learner(pretrained<span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> vision_learner(dls, load_learned_encoder,</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>                          normalize<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>                          pretrained<span class="op">=</span>pretrained,</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>                          custom_head<span class="op">=</span>create_head(<span class="dv">256</span>, dls.c, bn_final<span class="op">=</span><span class="va">True</span>),</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>                          loss_func<span class="op">=</span>LabelSmoothingCrossEntropyFlat(),</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>                          metrics<span class="op">=</span>accuracy).to_fp16()</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> get_learner(pretrained<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>learn.lr_find(suggest_funcs<span class="op">=</span>(valley, slide))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-27" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_learned_encoder(pretrained<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    encoder <span class="op">=</span> create_body(xresnet18(pretrained<span class="op">=</span><span class="va">True</span>), cut<span class="op">=</span>model_meta[xresnet18][<span class="st">"cut"</span>])</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pretrained:</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Started loading weights"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        encoder.load_state_dict(torch.load(path<span class="op">/</span><span class="st">"pretrained.pt"</span>))</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Finished loading weights"</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> encoder</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_learner(pretrained<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> vision_learner(dls, load_learned_encoder,</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>                          normalize<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>                          pretrained<span class="op">=</span>pretrained,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>                          custom_head<span class="op">=</span>create_head(<span class="dv">256</span>, dls.c, bn_final<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>                          loss_func<span class="op">=</span>LabelSmoothingCrossEntropyFlat(),</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>                          metrics<span class="op">=</span>accuracy).to_fp16()</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> get_learner(pretrained<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>learn.lr_find(suggest_funcs<span class="op">=</span>(valley, slide))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Started loading weights
 Finished loading weights</code></pre>
@@ -690,8 +678,8 @@ Finished loading weights</code></pre>
 <div class="cell-output cell-output-display">
 
 </div>
-<div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>SuggestedLRs(valley=0.0030199517495930195, slide=0.0831763744354248)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>SuggestedLRs(valley=0.0063095735386013985, slide=0.033113110810518265)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -701,8 +689,8 @@ Finished loading weights</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-28" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>learn.fine_tune(<span class="dv">8</span>, <span class="fl">1e-2</span>, wd<span class="op">=</span><span class="fl">0.03</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-28" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>learn.fine_tune(<span class="dv">8</span>, <span class="fl">1e-2</span>, wd<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -735,10 +723,10 @@ Finished loading weights</code></pre>
 <tbody>
 <tr class="odd">
 <td>0</td>
-<td>2.365422</td>
-<td>2.788396</td>
-<td>0.294118</td>
-<td>00:07</td>
+<td>2.256169</td>
+<td>2.391047</td>
+<td>0.363636</td>
+<td>00:13</td>
 </tr>
 </tbody>
 </table>
@@ -775,68 +763,68 @@ Finished loading weights</code></pre>
 <tbody>
 <tr class="odd">
 <td>0</td>
-<td>2.023843</td>
-<td>2.036399</td>
-<td>0.358289</td>
-<td>00:07</td>
+<td>1.851541</td>
+<td>1.771621</td>
+<td>0.461676</td>
+<td>00:14</td>
 </tr>
 <tr class="even">
 <td>1</td>
-<td>1.986245</td>
-<td>1.982175</td>
-<td>0.386809</td>
-<td>00:07</td>
+<td>1.791788</td>
+<td>1.689643</td>
+<td>0.518717</td>
+<td>00:14</td>
 </tr>
 <tr class="odd">
 <td>2</td>
-<td>1.948719</td>
-<td>1.943361</td>
-<td>0.402852</td>
-<td>00:07</td>
+<td>1.748776</td>
+<td>1.635341</td>
+<td>0.511586</td>
+<td>00:14</td>
 </tr>
 <tr class="even">
 <td>3</td>
-<td>1.909655</td>
-<td>1.874451</td>
-<td>0.406417</td>
-<td>00:07</td>
+<td>1.696687</td>
+<td>1.599028</td>
+<td>0.516934</td>
+<td>00:14</td>
 </tr>
 <tr class="odd">
 <td>4</td>
-<td>1.868977</td>
-<td>1.840779</td>
-<td>0.429590</td>
-<td>00:07</td>
+<td>1.646810</td>
+<td>1.560353</td>
+<td>0.547237</td>
+<td>00:14</td>
 </tr>
 <tr class="even">
 <td>5</td>
-<td>1.840563</td>
-<td>1.811273</td>
-<td>0.424242</td>
-<td>00:07</td>
+<td>1.605079</td>
+<td>1.562763</td>
+<td>0.540107</td>
+<td>00:14</td>
 </tr>
 <tr class="odd">
 <td>6</td>
-<td>1.808802</td>
-<td>1.793990</td>
-<td>0.440285</td>
-<td>00:07</td>
+<td>1.562018</td>
+<td>1.550508</td>
+<td>0.556150</td>
+<td>00:15</td>
 </tr>
 <tr class="even">
 <td>7</td>
-<td>1.786897</td>
-<td>1.793903</td>
-<td>0.443850</td>
-<td>00:07</td>
+<td>1.535239</td>
+<td>1.541727</td>
+<td>0.559715</td>
+<td>00:14</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>ついでに自己教師あり学習なし(従来の教師あり学習のみ)で、モデルのトレーニングをしてみましょう。平均すると、自己教師ありモデルと比べて、3%くらいaccuracy精度が落ちます。</p>
-<div id="cell-30" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> get_learner(pretrained<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>learn.fine_tune(<span class="dv">8</span>, <span class="fl">1e-2</span>, wd<span class="op">=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>ついでに自己教師あり学習なしのモデルの精度を比較してみます。自己教師ありモデルと比べて、おおよそ1.5%くらいaccuracy精度が落ちます。</p>
+<div id="cell-30" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> get_learner(pretrained<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>learn.fine_tune(<span class="dv">8</span>, <span class="fl">1e-2</span>, wd<span class="op">=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -869,10 +857,10 @@ Finished loading weights</code></pre>
 <tbody>
 <tr class="odd">
 <td>0</td>
-<td>2.349318</td>
-<td>2.642091</td>
-<td>0.256684</td>
-<td>00:07</td>
+<td>2.225904</td>
+<td>2.442802</td>
+<td>0.367201</td>
+<td>00:13</td>
 </tr>
 </tbody>
 </table>
@@ -909,69 +897,69 @@ Finished loading weights</code></pre>
 <tbody>
 <tr class="odd">
 <td>0</td>
-<td>2.012004</td>
-<td>2.145106</td>
-<td>0.340463</td>
-<td>00:07</td>
+<td>1.880750</td>
+<td>1.842755</td>
+<td>0.433155</td>
+<td>00:15</td>
 </tr>
 <tr class="even">
 <td>1</td>
-<td>1.986448</td>
-<td>2.036883</td>
-<td>0.368984</td>
-<td>00:07</td>
+<td>1.807753</td>
+<td>1.709808</td>
+<td>0.484848</td>
+<td>00:15</td>
 </tr>
 <tr class="odd">
 <td>2</td>
-<td>1.963871</td>
-<td>2.034508</td>
-<td>0.370766</td>
-<td>00:07</td>
+<td>1.764681</td>
+<td>1.745654</td>
+<td>0.479501</td>
+<td>00:15</td>
 </tr>
 <tr class="even">
 <td>3</td>
-<td>1.934942</td>
-<td>1.942387</td>
-<td>0.406417</td>
-<td>00:07</td>
+<td>1.721817</td>
+<td>1.688701</td>
+<td>0.493761</td>
+<td>00:14</td>
 </tr>
 <tr class="odd">
 <td>4</td>
-<td>1.902483</td>
-<td>1.917247</td>
-<td>0.386809</td>
-<td>00:07</td>
+<td>1.673104</td>
+<td>1.624697</td>
+<td>0.527629</td>
+<td>00:14</td>
 </tr>
 <tr class="even">
 <td>5</td>
-<td>1.876937</td>
-<td>1.903317</td>
-<td>0.393939</td>
-<td>00:07</td>
+<td>1.635066</td>
+<td>1.589912</td>
+<td>0.524064</td>
+<td>00:15</td>
 </tr>
 <tr class="odd">
 <td>6</td>
-<td>1.844684</td>
-<td>1.887917</td>
-<td>0.408200</td>
-<td>00:07</td>
+<td>1.597817</td>
+<td>1.580481</td>
+<td>0.536542</td>
+<td>00:14</td>
 </tr>
 <tr class="even">
 <td>7</td>
-<td>1.824337</td>
-<td>1.880563</td>
-<td>0.413547</td>
-<td>00:07</td>
+<td>1.570696</td>
+<td>1.581818</td>
+<td>0.541889</td>
+<td>00:15</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <p>最後に、インストールしたデータセットを削除します。</p>
-<div id="cell-32" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm <span class="op">-</span>rf {path}</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm <span class="op">-</span>rf temp</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm <span class="op">-</span>rf dl<span class="op">-</span><span class="dv">2024</span><span class="op">-</span>autum<span class="op">-</span>exp<span class="op">-</span><span class="fl">2.</span><span class="er">zip</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-32" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm <span class="op">-</span>rf {path}</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm <span class="op">-</span>rf temp</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm <span class="op">-</span>rf dl<span class="op">-</span><span class="dv">2024</span><span class="op">-</span>autum<span class="op">-</span>exp<span class="op">-</span><span class="fl">2.</span><span class="er">zip</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="まとめ" class="level2">
